@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.capas.dao.StudentDAO;
@@ -62,4 +63,25 @@ public class MainController {
 		mav.setViewName("main");
 		return mav;
 	}
+	
+	//******************************* DELETE ******************************
+
+	@RequestMapping("/deleteOne")
+	public ModelAndView update(@RequestParam(value="name") String name) {
+		ModelAndView mav = new ModelAndView();
+		List<Student> students = null;
+		try {
+			studentDao.delete(name);
+		}
+		catch(Exception e) {
+			log.info("Error: "+e.toString());
+		}
+		students = studentDao.findAll();
+		log.info(students.get(0).getlName());
+		mav.addObject("students", students);
+		mav.setViewName("main");
+		return mav;
+	}
+	
+	//**********************************************************************
 }

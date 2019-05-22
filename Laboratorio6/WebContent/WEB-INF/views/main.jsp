@@ -29,5 +29,16 @@
 				</tr>	
 			</c:forEach>
 	</table>
+ <%-- ******************DELETE****************** --%>
+	
+	<br>
+	<form action="${pageContext.request.contextPath}/deleteOne" method="post"> 
+		<label><strong>Eliminar estudiante</strong></label><br>
+		<label>Nombre: </label><input type="text" name="name"><input type="submit" value="Eliminar">
+		
+	</form>
+	<br>
+	
+	<%-- **************************************** --%>
 </body>
 </html>
